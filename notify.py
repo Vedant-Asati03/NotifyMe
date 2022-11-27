@@ -2,9 +2,7 @@
 Notifies the user
 """
 
-import os
 import time
-from pygame import mixer
 from plyer import notification
 
 
@@ -12,20 +10,10 @@ def main():
     """
     Calling functions
     """
-    time.sleep(3 * 60)      # In minute
-    notify()
-    screentime()
-
-
-def screentime():
-    """
-    Checks users screentime
-    """
-    alarm_file = os.path.join("alarm_sound.wav")
-    mixer.init()
-    mixer.music.load(alarm_file)
-    mixer.music.set_volume(10)
-    mixer.music.play()
+    print("\nOK, You will be notified in every 1/2 hour\n")
+    for _ in range(10):
+        time.sleep(1800)  # In minute
+        notify()
 
 
 def notify():
@@ -44,9 +32,3 @@ def notify():
 
 if __name__ == "__main__":
     main()
-    stop_alarm = input("Press 'o' to turn off alarm: ")
-
-    match stop_alarm:
-
-        case "o":
-            mixer.music.pause()
